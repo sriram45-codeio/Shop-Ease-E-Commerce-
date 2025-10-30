@@ -9,7 +9,7 @@ function ProductDetails({ addToCart }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/products/${id}`)
+    axios.get(`https://fakestoreapi.com/products/${id}`)
       .then((res) => {
         setProduct(res.data);
         setLoading(false);

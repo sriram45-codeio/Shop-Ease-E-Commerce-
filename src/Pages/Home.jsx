@@ -9,7 +9,7 @@ function Home({ addToCart }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/products')
+    axios.get('https://fakestoreapi.com/products')
       .then((res) => {
         setProducts(res.data.slice(-4));
         setLoading(false);

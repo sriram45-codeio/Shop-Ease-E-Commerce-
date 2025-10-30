@@ -8,7 +8,7 @@ function Shop({ addToCart }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/products')
+    axios.get('https://fakestoreapi.com/products')
       .then((res) => {
         setProducts(res.data);
         setLoading(false);
