@@ -7,13 +7,13 @@ import Shop from './Pages/Shop.jsx';
 import ProductDetails from './Pages/ProductDetails.jsx';
 import Cart from './Pages/Cart.jsx';
 import About from './Pages/About.jsx';
+import PaymentPage from './Pages/Payment.jsx';
 import Error from './Pages/Error.jsx';
 import Navbar from './Pages/Navbar.jsx';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
 
-  // Add product to cart
   const addToCart = (product) => {
     const exist = cartItems.find(item => item.id === product.id);
     if (exist) {
@@ -25,12 +25,10 @@ function App() {
     }
   };
 
-  // Remove product from cart
   const removeFromCart = (id) => {
     setCartItems(cartItems.filter(item => item.id !== id));
   };
 
-  // Update quantity of product in cart
   const updateQuantity = (id, newQuantity) => {
     if (newQuantity < 1) {
       removeFromCart(id);
@@ -41,6 +39,8 @@ function App() {
     }
   };
 
+  const clearCart = () => setCartItems([]);
+
   return (
     <BrowserRouter>
       <Navbar cartCount={cartItems.length} />
@@ -48,13 +48,16 @@ function App() {
         <Route path='/' element={<Home addToCart={addToCart} />} />
         <Route path='/Shop' element={<Shop addToCart={addToCart} />} />
         <Route path='/ProductDetails/:id' element={<ProductDetails addToCart={addToCart} />} />
-        <Route path='/Cart' element={
-          <Cart 
-            cartItems={cartItems} 
-            removeFromCart={removeFromCart} 
-            updateQuantity={updateQuantity} 
-          />} 
+        <Route
+          path='/Cart'
+          element={
+            <Cart
+              cart={cartItems}
+              setCart={setCartItems}
+            />
+          }
         />
+        <Route path='/Payment' element={<PaymentPage clearCart={clearCart} />} />
         <Route path='/About' element={<About />} />
         <Route path='/*' element={<Error />} />
       </Routes>

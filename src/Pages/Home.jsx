@@ -29,7 +29,7 @@ function Home({ addToCart }) {
       <header className="hero-section">
         <h1>Welcome to ShopEase</h1>
         <p>Your one-stop online store for gadgets & accessories</p>
-        <button className="shop-btn" onClick={() => navigate('/shop')}>
+        <button className="shop-btn" onClick={() => navigate('/Shop')}>
           Shop Now
         </button>
       </header>
@@ -44,7 +44,9 @@ function Home({ addToCart }) {
                 <h3>{product.title}</h3>
               </Link>
               <p className="price">₹{product.price}</p>
-              <button className="buy-btn" onClick={() => addToCart(product)}>Add to Cart</button>
+              <button className="buy-btn" onClick={() => addToCart(product)}>
+                Add to Cart
+              </button>
             </div>
           ))}
         </div>

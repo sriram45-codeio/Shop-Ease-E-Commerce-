@@ -40,7 +40,9 @@ function Shop({ addToCart }) {
                 <h3>{product.title}</h3>
               </Link>
               <p className="price">₹{product.price}</p>
-              <button className="buy-btn" onClick={() => addToCart(product)}>Add to Cart</button>
+              <button className="buy-btn" onClick={() => addToCart(product)}>
+                Add to Cart
+              </button>
             </div>
           ))}
         </div>
